@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import CountrySelector from './Components/CountrySelector/CountrySelector';
+import Graph from './Components/Graph/Graph';
+import Summary from './Components/Summary/Summary';
+import {getCountries, getData} from "./Api/index";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+class App extends Component {
+  state = {
+    data: {},
+    country: ""
+  }
+
+  async componentDidMount() {
+    const retrievedData = await getData();
+    const getAllCountries = await getCountries();
+    this.setState({data:retrievedData});
+    console.log(retrievedData);
+    console.log(getAllCountries);
+ }
+
+ onCountryChange = async(country) => {
+  const data = await getData(country);
+  this.setState({data:data, country: country});
+  console.log(this.state.data);
+}
+
+  render() {
+    return (
+      <div className="App">
+       <Summary data = {this.state.data}/>
+       <CountrySelector onCountryChange = {this.onCountryChange}/>
+       <Graph data = {this.state.data} />
     </div>
-  );
+    )
+  }
 }
 
 export default App;
