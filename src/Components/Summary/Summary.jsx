@@ -8,11 +8,11 @@ const Summary = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
     }
     return (
         <div>
-            <Grid container justify = "center" spacing = {2}>
-                <Grid item component = {Card} xs = {12} md = {3}>
+            <Grid container justify = "center" spacing = {4}>
+                <Grid item component = {Card} xs = {12} md = {3} style = {{backgroundColor:"yellow"}}>
                     <CardContent>
-                       <Typography color="textSecondary" gutterBottom>Infected</Typography>
-                       <Typography variant = "h6">
+                       <Typography color="primary" gutterBottom>Infected</Typography>
+                       <Typography variant = "h6" style = {{color:"chocolate"}}>
                            <CountUp
                              start = {0}
                              separator = ","
@@ -20,14 +20,13 @@ const Summary = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
                              duration = {3}
                            />
                        </Typography>
-                       <Typography color="textSecondary" >{new Date(lastUpdate).toDateString()}</Typography>
-                       <Typography variant="body2">number of cases</Typography>
+                       <Typography variant="body2" style = {{color:"mediumpurple"}}>Number of cases</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component = {Card} xs = {12} md = {3}>
+                <Grid item component = {Card} xs = {12} md = {3} style = {{backgroundColor:"green"}}>
                     <CardContent>
-                       <Typography color="textSecondary" gutterBottom>Recovered</Typography>
-                       <Typography variant = "h6">
+                       <Typography style = {{color:"black"}} gutterBottom>Recovered</Typography>
+                       <Typography variant = "h6" style = {{color:"white"}} >
                        <CountUp
                              start = {0}
                              separator = ","
@@ -35,14 +34,13 @@ const Summary = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
                              duration = {3}
                            />
                        </Typography>
-                       <Typography color="textSecondary" >{new Date(lastUpdate).toDateString()}</Typography>
-                       <Typography variant="body2">number of cases</Typography>
+                       <Typography variant="body2" style = {{color:"cyan"}} >Number of cases</Typography>
                     </CardContent>
                 </Grid>
-                <Grid item component = {Card} xs = {12} md = {3}>
+                <Grid item component = {Card} xs = {12} md = {3} style = {{backgroundColor:"crimson"}}>
                     <CardContent>
-                       <Typography color="textSecondary" gutterBottom>Deaths</Typography>
-                       <Typography variant = "h6">
+                       <Typography style = {{color:"gold"}}  gutterBottom>Deaths</Typography>
+                       <Typography variant = "h6" style = {{color:"white"}}>
                        <CountUp
                              start = {0}
                              separator = ","
@@ -50,11 +48,11 @@ const Summary = ({data:{confirmed, recovered, deaths, lastUpdate}}) => {
                              duration = {3}
                            />
                        </Typography>
-                       <Typography color="textSecondary" >{new Date(lastUpdate).toDateString()}</Typography>
-                       <Typography variant="body2">number of cases</Typography>
+                       <Typography variant="body2" style = {{color:"cyan"}}>Number of cases</Typography>
                     </CardContent>
                 </Grid>
             </Grid>
+            <Typography color="textSecondary" variant = "h5" style = {{color:"mediumpurple", marginTop: "30px"}} >{new Date(lastUpdate).toDateString()}</Typography>
         </div>
     )
 }
